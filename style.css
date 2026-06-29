@@ -1,0 +1,679 @@
+/* ==========================================================================
+   1. RESET & BASE STYLES (기본 설정)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8faac;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --accent: #0284c7; /* 전문적인 블루 */
+    --accent-light: #e0f2fe;
+    --border: #e2e8f0;
+    --card-bg: #ffffff;
+    --header-bg: rgba(255, 255, 255, 0.8);
+}
+
+/* 다크모드가 활성화되었을 때 적용될 색상 (선택 사항) */
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent: #38bdf8;
+    --accent-light: #0369a1;
+    --border: #334155;
+    --card-bg: #1e293b;
+    --header-bg: rgba(15, 23, 42, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. HEADER & NAVIGATION (상단 바)
+   ========================================================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: var(--header-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-left: 30px;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+}
+
+.navbar a:hover {
+    color: var(--accent);
+}
+
+#darkModeBtn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+/* ==========================================================================
+   3. HERO SECTION (첫 화면)
+   ========================================================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+    background: linear-gradient(135deg, var(--bg-primary) 60%, var(--bg-secondary) 100%);
+    padding-top: 80px;
+}
+
+.hero-text {
+    max-width: 55%;
+}
+
+.intro {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.hero-text h1 span {
+    color: var(--accent);
+}
+
+.description {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+.hero-buttons .btn-primary, .hero-buttons .btn-secondary {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: #ffffff;
+    margin-right: 15px;
+    border: 1px solid var(--accent);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--accent);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--border);
+}
+
+/* 오른쪽 하이라이트 카드 패널 */
+.hero-image {
+    max-width: 40%;
+}
+
+.research-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    border-left: 4px solid var(--accent);
+    padding-left: 10px;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.highlight-item:last-child {
+    margin-bottom: 0;
+}
+
+.highlight-item span {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    margin-top: 2px;
+}
+
+.highlight-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.highlight-item p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* 스크롤 지시계 */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   4. COMMON SECTION STYLES (공통 섹션 레이아웃)
+   ========================================================================== */
+.section {
+    padding: 100px 8%;
+    border-bottom: 1px solid var(--border);
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 4px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+/* About Me */
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 2.2;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.about-text strong {
+    color: var(--text-primary);
+}
+
+/* ==========================================================================
+   5. TIMELINE (Research Journey)
+   ========================================================================== */
+.timeline {
+    position: relative;
+    border-left: 2px solid var(--border);
+    padding-left: 30px;
+    margin-left: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -41px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    border: 4px solid var(--bg-primary);
+}
+
+.timeline-date {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 5px;
+}
+
+.timeline-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.sub-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   6. PROJECTS (핵심 연구 프로젝트)
+   ========================================================================== */
+.project-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+}
+
+.project-tags {
+    margin-bottom: 15px;
+}
+
+.project-tags span {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 20px;
+    margin-right: 8px;
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.project-subtitle {
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.project-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* ==========================================================================
+   PROJECTS SECTION IMAGE LAYOUT (연구 이미지 배치 추가)
+   ========================================================================== */
+.research-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.research-text-side {
+    flex: 1.2; /* 텍스트 영역 비율 */
+}
+
+.research-image-side {
+    flex: 0.8; /* 이미지 영역 비율 */
+    text-align: center;
+    background-color: #ffffff; /* 이미지 뒤를 하얗게 받쳐서 투명도 확보 */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .research-image-side {
+    background-color: #f8fafc; /* 다크모드에서도 이미지가 잘 보이도록 밝은 배경 유지 */
+}
+
+.mechanism-img {
+    width: 100%;
+    height: auto;
+    max-height: 370px; /* 너무 크지 않게 적당히 제한 */
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+
+
+/* 화면이 좁아지면(모바일 등) 위아래로 배치되도록 반응형 조절 */
+@media (max-width: 968px) {
+    .research-container {
+        flex-direction: column;
+    }
+}
+
+/* ==========================================================================
+   7. SKILLS (기술 역량 그리드 - 전면 개편)
+   ========================================================================== */
+.skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.skill-category {
+    background-color: #fcfcfc; /* 연한 회미색으로 정돈 */
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+}
+
+[data-theme="dark"] .skill-category {
+    background-color: #1e293b;
+}
+
+.skill-category h3 {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    color: var(--accent);
+    font-weight: 700;
+    border-bottom: 2px solid var(--accent-light);
+    padding-bottom: 10px;
+}
+
+.skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 아이템 간의 세로 간격 확보 */
+}
+
+.skill-item {
+    border-left: 3px solid var(--border); /* 옆에 세련된 포인트 바 추가 */
+    padding-left: 15px;
+    transition: border-color 0.3s;
+}
+
+.skill-item:hover {
+    border-color: var(--accent); /* 마우스 올리면 파란 바 변환 */
+}
+
+.skill-item h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.skill-item p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   8. PUBLICATIONS (논문 및 학회 성과)
+   ========================================================================== */
+.pub-container h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.publication-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.pub-item {
+    display: flex;
+    align-items: flex-start;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.pub-type {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 4px;
+    margin-right: 20px;
+    white-space: nowrap;
+}
+
+.pub-type.journal { background-color: #dcfce7; color: #16a34a; }
+.pub-type.aacr { background-color: #fef3c7; color: #d97706; }
+.pub-type.ksbmb { background-color: #f3e8ff; color: #9333ea; }
+
+.pub-details h3 {
+    font-size: 1.05rem;
+    margin-bottom: 5px;
+}
+
+.pub-journal {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* 학위논문 안내 노트 스타일 */
+.pub-note {
+    margin-top: 10px;
+    font-size: 0.80rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    background-color: #f1f5f9; /* 살짝 강조되는 미색 배경 */
+    padding: 10px 15px;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* 학위논문 링크 스타일 */
+.thesis-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.thesis-link:hover {
+    text-decoration: underline;
+}
+
+/* 논문 링크 기본 스타일 */
+.pub-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+/* 마우스를 올렸을 때 전문적인 블루 컬러로 부드럽게 변하는 효과 */
+.pub-link:hover {
+    color: var(--accent);
+    text-decoration: underline; /* 마우스 올렸을 때만 밑줄 생성 */
+}
+/* ==========================================================================
+   9. CONTACT & FOOTER
+   ========================================================================== */
+.contact-intro {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+}
+
+.contact-info {
+    display: flex;
+    gap: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.contact-item span {
+    margin-right: 10px;
+    font-size: 1.3rem;
+}
+
+.contact-item a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.footer {
+    text-align: center;
+    padding: 40px 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border);
+}
+
+/* ==========================================================================
+   ABOUT SECTION LAYOUT (프로필 사진 배치 추가)
+   ========================================================================== */
+.about-container {
+    display: flex;
+    gap: 50px;
+    align-items: center; /* 사진과 글 중앙 정렬 */
+}
+
+.about-image-side {
+    flex: 0.5; /* 사진 영역 비율 */
+    text-align: center;
+}
+
+.profile-img {
+    width: 80%;
+    max-width: 150px; /* 사진 최대 너비 제한 (단정한 크기) */
+    height: auto;
+    border-radius: 12px; /* 모서리를 부드럽게 */
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.about-text-side {
+    flex: 1.3; /* 텍스트 영역 비율 */
+}
+
+/* 화면이 좁아지면 위아래로 정렬되도록 */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .profile-img {
+        max-width: 200px;
+    }
+}
+/* ==========================================================================
+   ABOUT SECTION CORE SPEC BOX (어바웃 미 프로필 박스 스타일)
+   ========================================================================== */
+.profile-info-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 30px;
+    background-color: #f0f7ff; /* 💡 은은하고 청량한 아주 연한 블루 그레이 */
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e0f2fe; /* 테두리도 연한 블루 톤으로 매칭 */
+    margin-bottom: 25px;
+}
+
+/* 다크모드일 때의 색상도 어울리게 세팅 */
+[data-theme="dark"] .profile-info-box {
+    background-color: #0f172a; /* 시크한 딥 네이비 */
+    border-color: #1e293b;
+}
+
+.info-item {
+    font-size: 0.90rem;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+}
+
+.info-item strong {
+    width: 95px; /* 라벨 너비 고정으로 줄맞춤 */
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.info-item span {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.about-bio p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.about-bio p:last-child {
+    margin-bottom: 0;
+}
+
+/* 화면 좁아질 때 반응형 조절 */
+@media (max-width: 600px) {
+    .profile-info-box {
+        grid-template-columns: 1fr; /* 모바일에선 1열로 */
+    }
+}
