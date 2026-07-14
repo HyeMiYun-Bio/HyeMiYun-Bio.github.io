@@ -677,3 +677,18 @@ body {
         grid-template-columns: 1fr; /* 모바일에선 1열로 */
     }
 }
+.logo {
+    /* 원래 이름 부분의 스타일 (원하시는 크기로 조절 가능) */
+    font-size: 1.5rem; 
+    font-weight: bold;
+    line-height: 1.2; /* 이름과 아랫줄 간격을 좁혀주어 더 세련되게 만듭니다 */
+}
+
+.logo-sub {
+    /* 💡 학위명 글자 크기를 작게 줄이고, 살짝 연한 회색 톤으로 세련되게 만듭니다 */
+    font-size: 0.85rem; 
+    font-weight: normal; /* 얇은 글씨체로 변경 */
+    color: #888888; /* 세련된 그레이 톤 (배경에 맞춰 조절 가능) */
+    letter-spacing: 0.5px; /* 자간을 살짝 넓혀 가독성을 높입니다 */
+}
+
